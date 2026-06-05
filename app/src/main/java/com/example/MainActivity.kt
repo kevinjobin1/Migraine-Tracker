@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.DateRange
@@ -848,14 +849,14 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                                contentDescription = "Back to dashboard",
+                                contentDescription = Translate.t("back_to_dashboard", lang),
                                 tint = theme.primary,
                                 modifier = Modifier.size(28.dp)
                             )
                         }
 
                         Text(
-                            text = "All Episodes & Notes",
+                            text = Translate.t("all_episodes_title", lang),
                             fontFamily = theme.fontFamily,
                             fontSize = 22.sp,
                             fontWeight = FontWeight.Bold,
@@ -878,7 +879,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                 fallback = {
                                     Icon(
                                         imageVector = Icons.Default.DateRange,
-                                        contentDescription = "No journals registered",
+                                        contentDescription = Translate.t("desc_no_journals", lang),
                                         tint = theme.primary.copy(alpha = 0.4f),
                                         modifier = Modifier
                                             .size(64.dp)
@@ -887,7 +888,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                 }
                             )
                             Text(
-                                text = "No migraine journals logged yet.",
+                                text = Translate.t("no_journals_logged_yet", lang),
                                 fontFamily = theme.fontFamily,
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium,
@@ -912,7 +913,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     onValueChange = { searchQuery = it },
                                     placeholder = {
                                         Text(
-                                            text = "Search notes, symptoms, triggers...",
+                                            text = Translate.t("search_placeholder", lang),
                                             fontFamily = theme.fontFamily,
                                             fontSize = 13.sp,
                                             color = theme.onSurfaceVariant.copy(alpha = 0.6f)
@@ -921,7 +922,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     leadingIcon = {
                                         Icon(
                                             imageVector = Icons.Default.Search,
-                                            contentDescription = "Search",
+                                            contentDescription = Translate.t("desc_search", lang),
                                             tint = theme.primary,
                                             modifier = Modifier.size(20.dp)
                                         )
@@ -934,7 +935,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.Default.Clear,
-                                                    contentDescription = "Clear search",
+                                                    contentDescription = Translate.t("desc_clear_search", lang),
                                                     tint = theme.onSurfaceVariant.copy(alpha = 0.7f),
                                                     modifier = Modifier.size(18.dp)
                                                 )
@@ -979,8 +980,8 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             )
                                     ) {
                                         Icon(
-                                            imageVector = Icons.Default.Info,
-                                            contentDescription = "Filters",
+                                            imageVector = Icons.Default.FilterList,
+                                            contentDescription = Translate.t("desc_filters", lang),
                                             tint = if (filterPanelExpanded || activeFiltersCount > 0) theme.primary else theme.onSurfaceVariant,
                                             modifier = Modifier.size(22.dp)
                                         )
@@ -1024,7 +1025,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                 ) {
                                     // Symptom multi-select filter title
                                     Text(
-                                        text = "Filter by Symptom Tags",
+                                        text = Translate.t("filter_by_symptom", lang),
                                         fontFamily = theme.fontFamily,
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.Bold,
@@ -1056,7 +1057,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                                     .padding(horizontal = 10.dp, vertical = 6.dp)
                                             ) {
                                                 Text(
-                                                    text = sym,
+                                                    text = Translate.t("tag_" + sym.lowercase().replace(" ", "_"), lang),
                                                     fontFamily = theme.fontFamily,
                                                     fontSize = 11.sp,
                                                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
@@ -1070,7 +1071,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
 
                                     // Date Range selection section
                                     Text(
-                                        text = "Filter by Date Range",
+                                        text = Translate.t("filter_by_daterange", lang),
                                         fontFamily = theme.fontFamily,
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.Bold,
@@ -1112,12 +1113,12 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         ) {
                                             Icon(
                                                 imageVector = Icons.Default.DateRange,
-                                                contentDescription = "Start Date",
+                                                contentDescription = Translate.t("desc_start_date", lang),
                                                 modifier = Modifier.size(14.dp)
                                             )
                                             Spacer(modifier = Modifier.width(4.dp))
                                             Text(
-                                                text = startDateFilter ?: "From Date",
+                                                text = startDateFilter ?: Translate.t("from_date", lang),
                                                 fontFamily = theme.fontFamily,
                                                 fontSize = 11.sp,
                                                 fontWeight = if (startDateFilter != null) FontWeight.Bold else FontWeight.Normal
@@ -1125,7 +1126,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         }
 
                                         Text(
-                                            text = "to",
+                                            text = Translate.t("to", lang),
                                             fontFamily = theme.fontFamily,
                                             fontSize = 11.sp,
                                             color = theme.onSurfaceVariant
@@ -1158,12 +1159,12 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         ) {
                                             Icon(
                                                 imageVector = Icons.Default.DateRange,
-                                                contentDescription = "End Date",
+                                                contentDescription = Translate.t("desc_end_date", lang),
                                                 modifier = Modifier.size(14.dp)
                                             )
                                             Spacer(modifier = Modifier.width(4.dp))
                                             Text(
-                                                text = endDateFilter ?: "To Date",
+                                                text = endDateFilter ?: Translate.t("to_date", lang),
                                                 fontFamily = theme.fontFamily,
                                                 fontSize = 11.sp,
                                                 fontWeight = if (endDateFilter != null) FontWeight.Bold else FontWeight.Normal
@@ -1193,7 +1194,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             contentPadding = PaddingValues(horizontal = 4.dp, vertical = 2.dp),
                                             colors = ButtonDefaults.outlinedButtonColors(contentColor = theme.primary)
                                         ) {
-                                            Text("Last 7d", fontSize = 10.sp, fontFamily = theme.fontFamily)
+                                            Text(Translate.t("last_7d", lang), fontSize = 10.sp, fontFamily = theme.fontFamily)
                                         }
 
                                         // Preset: Last 30 Days
@@ -1211,7 +1212,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             contentPadding = PaddingValues(horizontal = 4.dp, vertical = 2.dp),
                                             colors = ButtonDefaults.outlinedButtonColors(contentColor = theme.primary)
                                         ) {
-                                            Text("Last 30d", fontSize = 10.sp, fontFamily = theme.fontFamily)
+                                            Text(Translate.t("last_30d", lang), fontSize = 10.sp, fontFamily = theme.fontFamily)
                                         }
 
                                         // Clear Preset
@@ -1228,7 +1229,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                                 modifier = Modifier.weight(1f),
                                                 contentPadding = PaddingValues(horizontal = 4.dp, vertical = 2.dp)
                                             ) {
-                                                Text("Reset All", fontSize = 10.sp, fontFamily = theme.fontFamily, color = Color.White)
+                                                Text(Translate.t("reset_all", lang), fontSize = 10.sp, fontFamily = theme.fontFamily, color = Color.White)
                                             }
                                         }
                                     }
@@ -1257,7 +1258,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         fallback = {
                                             Icon(
                                                 imageVector = Icons.Default.Info,
-                                                contentDescription = "No results",
+                                                contentDescription = Translate.t("desc_no_results", lang),
                                                 tint = theme.onSurfaceVariant.copy(alpha = 0.4f),
                                                 modifier = Modifier.size(48.dp)
                                             )
@@ -1265,7 +1266,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     )
                                     Spacer(modifier = Modifier.height(12.dp))
                                     Text(
-                                        text = "No matching episodes found.",
+                                        text = Translate.t("no_matching_episodes", lang),
                                         fontFamily = theme.fontFamily,
                                         fontSize = 15.sp,
                                         fontWeight = FontWeight.Bold,
@@ -1273,7 +1274,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     )
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
-                                        text = "Try adjusting your search queries or filter tags.",
+                                        text = Translate.t("adjust_filters_tip", lang),
                                         fontFamily = theme.fontFamily,
                                         fontSize = 13.sp,
                                         color = theme.onSurfaceVariant.copy(alpha = 0.6f),
@@ -1290,7 +1291,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         shape = theme.buttonShape,
                                         colors = ButtonDefaults.buttonColors(containerColor = theme.primary)
                                     ) {
-                                        Text("Clear Active Filters", fontFamily = theme.fontFamily, fontSize = 12.sp)
+                                        Text(Translate.t("clear_filters_btn", lang), fontFamily = theme.fontFamily, fontSize = 12.sp)
                                     }
                                 }
                             }
@@ -1327,7 +1328,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.Default.Delete,
-                                            contentDescription = "Delete entry",
+                                            contentDescription = Translate.t("desc_delete_entry", lang),
                                             tint = theme.onSurfaceVariant.copy(alpha = 0.5f),
                                             modifier = Modifier.size(20.dp)
                                         )
@@ -1353,7 +1354,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                                     .padding(horizontal = 5.dp, vertical = 2.dp)
                                             ) {
                                                 Text(
-                                                    text = "Pain ${log.intensity}/10",
+                                                    text = "${Translate.t("pain_scale_label", lang)} ${log.intensity}/10",
                                                     fontFamily = theme.fontFamily,
                                                     fontSize = 9.sp,
                                                     fontWeight = FontWeight.Bold,
@@ -1365,7 +1366,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         Spacer(modifier = Modifier.height(4.dp))
 
                                         Text(
-                                            text = log.note.ifBlank { if (lang == "fr") "Aucune description saisie." else "No description entered." },
+                                            text = log.note.ifBlank { Translate.t("no_description_entered", lang) },
                                             fontFamily = theme.fontFamily,
                                             fontSize = 14.sp,
                                             color = theme.onSurface,
@@ -1376,8 +1377,12 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         if (log.symptoms.isNotBlank() || log.triggers.isNotBlank()) {
                                             Spacer(modifier = Modifier.height(4.dp))
                                             val details = mutableListOf<String>()
-                                            if (log.symptoms.isNotBlank()) details.add("Symptom: ${log.symptoms}")
-                                            if (log.triggers.isNotBlank()) details.add("Trigger: ${log.triggers}")
+                                            if (log.symptoms.isNotBlank()) {
+                                                details.add("${Translate.t("symptom", lang)}: ${Translate.translateCsvTags(log.symptoms, lang)}")
+                                            }
+                                            if (log.triggers.isNotBlank()) {
+                                                details.add("${Translate.t("trigger", lang)}: ${Translate.translateCsvTags(log.triggers, lang)}")
+                                            }
                                             Text(
                                                 text = details.joinToString(" | "),
                                                 fontFamily = theme.fontFamily,
@@ -1429,10 +1434,10 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                         horizontalArrangement = Arrangement.SpaceAround
                     ) {
                         val modes = listOf(
-                            CalendarDisplayMode.MONTH to if (lang == "fr") "Mois" else "Month",
-                            CalendarDisplayMode.WEEK to if (lang == "fr") "Semaine" else "Week",
-                            CalendarDisplayMode.DAY to if (lang == "fr") "Jour" else "Day",
-                            CalendarDisplayMode.YEAR to if (lang == "fr") "Année" else "Year"
+                            CalendarDisplayMode.MONTH to Translate.t("calendar_mode_month", lang),
+                            CalendarDisplayMode.WEEK to Translate.t("calendar_mode_week", lang),
+                            CalendarDisplayMode.DAY to Translate.t("calendar_mode_day", lang),
+                            CalendarDisplayMode.YEAR to Translate.t("calendar_mode_year", lang)
                         )
                         modes.forEach { (mode, label) ->
                             val isSelected = calendarDisplayMode == mode
@@ -1478,7 +1483,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                val monthName = remember(currentCal) {
+                                val monthName = remember(currentCal, lang) {
                                     SimpleDateFormat("MMMM yyyy", if (lang == "fr") Locale.FRENCH else Locale.US).format(currentCal.time)
                                 }
 
@@ -1497,7 +1502,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                                            contentDescription = "Previous Month",
+                                            contentDescription = Translate.t("desc_prev_month", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -1507,7 +1512,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                            contentDescription = "Next Month",
+                                            contentDescription = Translate.t("desc_next_month", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -1682,10 +1687,10 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                val weekStart = remember(weekDays) {
+                                val weekStart = remember(weekDays, lang) {
                                     SimpleDateFormat("MMM dd", if (lang == "fr") Locale.FRENCH else Locale.US).format(weekDays[0].time)
                                 }
-                                val weekEnd = remember(weekDays) {
+                                val weekEnd = remember(weekDays, lang) {
                                     SimpleDateFormat("MMM dd, yyyy", if (lang == "fr") Locale.FRENCH else Locale.US).format(weekDays[6].time)
                                 }
 
@@ -1704,7 +1709,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                                            contentDescription = "Previous Week",
+                                            contentDescription = Translate.t("desc_prev_week", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -1714,7 +1719,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                            contentDescription = "Next Week",
+                                            contentDescription = Translate.t("desc_next_week", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -1840,7 +1845,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                                            contentDescription = "Previous Day",
+                                            contentDescription = Translate.t("desc_prev_day", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -1850,7 +1855,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                            contentDescription = "Next Day",
+                                            contentDescription = Translate.t("desc_next_day", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -1898,7 +1903,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                                 .padding(horizontal = 10.dp, vertical = 6.dp)
                                         ) {
                                             Text(
-                                                text = "Intensity: ${logForDay.intensity}/10",
+                                                text = "${Translate.t("intensity", lang)}: ${logForDay.intensity}/10",
                                                 fontFamily = theme.fontFamily,
                                                 fontSize = 13.sp,
                                                 fontWeight = FontWeight.Bold,
@@ -1919,12 +1924,12 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.Default.Edit,
-                                                    contentDescription = "Edit Tracker",
+                                                    contentDescription = Translate.t("desc_edit_tracker", lang),
                                                     modifier = Modifier.size(18.dp),
                                                     tint = theme.onPrimary
                                                 )
                                                 Spacer(modifier = Modifier.width(6.dp))
-                                                Text("Edit", fontSize = 14.sp, fontFamily = theme.fontFamily)
+                                                Text(Translate.t("edit", lang), fontSize = 14.sp, fontFamily = theme.fontFamily)
                                             }
 
                                             IconButton(
@@ -1935,7 +1940,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.Default.Delete,
-                                                    contentDescription = "Delete Tracker",
+                                                    contentDescription = Translate.t("desc_delete_tracker", lang),
                                                     modifier = Modifier.size(20.dp),
                                                     tint = theme.accent
                                                 )
@@ -1946,7 +1951,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     if (logForDay.symptoms.isNotBlank()) {
                                         Spacer(modifier = Modifier.height(12.dp))
                                         Text(
-                                            text = "Symptoms Detected",
+                                            text = Translate.t("symptoms_detected", lang),
                                             fontFamily = theme.fontFamily,
                                             fontSize = 12.sp,
                                             fontWeight = FontWeight.Bold,
@@ -1965,7 +1970,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                                         .padding(horizontal = 8.dp, vertical = 4.dp)
                                                 ) {
                                                     Text(
-                                                        text = symptom,
+                                                        text = Translate.t("tag_" + symptom.lowercase().replace(" ", "_"), lang),
                                                         fontFamily = theme.fontFamily,
                                                         fontSize = 11.sp,
                                                         color = theme.onSurfaceVariant
@@ -1978,7 +1983,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     if (logForDay.triggers.isNotBlank()) {
                                         Spacer(modifier = Modifier.height(12.dp))
                                         Text(
-                                            text = "Suspected Triggers",
+                                            text = Translate.t("suspected_triggers", lang),
                                             fontFamily = theme.fontFamily,
                                             fontSize = 12.sp,
                                             fontWeight = FontWeight.Bold,
@@ -1997,7 +2002,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                                         .padding(horizontal = 8.dp, vertical = 4.dp)
                                                 ) {
                                                     Text(
-                                                        text = trigger,
+                                                        text = Translate.t("tag_" + trigger.lowercase().replace(" ", "_"), lang),
                                                         fontFamily = theme.fontFamily,
                                                         fontSize = 11.sp,
                                                         color = theme.onSurfaceVariant
@@ -2010,7 +2015,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     if (logForDay.note.isNotBlank()) {
                                         Spacer(modifier = Modifier.height(12.dp))
                                         Text(
-                                            text = "Notes",
+                                            text = Translate.t("notes", lang),
                                             fontFamily = theme.fontFamily,
                                             fontSize = 12.sp,
                                             fontWeight = FontWeight.Bold,
@@ -2035,13 +2040,13 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.Default.Info,
-                                            contentDescription = "No records",
+                                            contentDescription = Translate.t("desc_no_records", lang),
                                             tint = theme.onSurfaceVariant.copy(alpha = 0.4f),
                                             modifier = Modifier.size(36.dp)
                                         )
                                         Spacer(modifier = Modifier.height(6.dp))
                                         Text(
-                                            text = "No migraine entry registered on this day",
+                                            text = Translate.t("no_entry_this_day", lang),
                                             fontFamily = theme.fontFamily,
                                             fontSize = 13.sp,
                                             color = theme.onSurfaceVariant.copy(alpha = 0.8f)
@@ -2053,7 +2058,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             colors = ButtonDefaults.buttonColors(containerColor = theme.accent),
                                             contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
                                         ) {
-                                            Text("+ Log Episode", fontFamily = theme.fontFamily, fontSize = 12.sp, color = Color.White)
+                                            Text(Translate.t("log_episode_btn", lang), fontFamily = theme.fontFamily, fontSize = 12.sp, color = Color.White)
                                         }
                                     }
                                 }
@@ -2086,7 +2091,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    text = if (lang == "fr") "Année $targetYear" else "Year $targetYear",
+                                    text = "${Translate.t("calendar_mode_year", lang)} $targetYear",
                                     fontFamily = theme.fontFamily,
                                     fontSize = 22.sp,
                                     fontWeight = FontWeight.Bold,
@@ -2103,7 +2108,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                                            contentDescription = if (lang == "fr") "Année précédente" else "Previous Year",
+                                            contentDescription = Translate.t("prev_year", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -2116,7 +2121,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     ) {
                                         Icon(
                                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                            contentDescription = if (lang == "fr") "Année suivante" else "Next Year",
+                                            contentDescription = Translate.t("next_year", lang),
                                             tint = theme.primary
                                         )
                                     }
@@ -2133,7 +2138,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                     }
                                 }
 
-                                val targetLabel = remember(targetCal) {
+                                val targetLabel = remember(targetCal, lang) {
                                     SimpleDateFormat("MMMM yyyy", if (lang == "fr") Locale.FRENCH else Locale.US).format(targetCal.time)
                                 }
                                 val targetYr = targetCal.get(Calendar.YEAR)
@@ -2300,7 +2305,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                             )
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                contentDescription = "See all episodes",
+                                contentDescription = Translate.t("desc_see_all_episodes", lang),
                                 tint = theme.accent,
                                 modifier = Modifier.size(20.dp)
                             )
@@ -2323,7 +2328,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                 fallback = {
                                     Icon(
                                         imageVector = Icons.Default.DateRange,
-                                        contentDescription = "No journals registered",
+                                        contentDescription = Translate.t("desc_no_journals", lang),
                                         tint = theme.primary.copy(alpha = 0.4f),
                                         modifier = Modifier
                                             .size(64.dp)
@@ -2376,7 +2381,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                         ) {
                                             Icon(
                                                 imageVector = Icons.Default.Delete,
-                                                contentDescription = "Delete entry",
+                                                contentDescription = Translate.t("desc_delete_entry", lang),
                                                 tint = theme.onSurfaceVariant.copy(alpha = 0.5f),
                                                 modifier = Modifier.size(20.dp)
                                             )
@@ -2404,7 +2409,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                                         .padding(horizontal = 5.dp, vertical = 2.dp)
                                                 ) {
                                                     Text(
-                                                        text = "Pain ${log.intensity}/10",
+                                                        text = "${Translate.t("pain_scale_label", lang)} ${log.intensity}/10",
                                                         fontFamily = theme.fontFamily,
                                                         fontSize = 9.sp,
                                                         fontWeight = FontWeight.Bold,
@@ -2416,7 +2421,7 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             Spacer(modifier = Modifier.height(4.dp))
 
                                             Text(
-                                                text = log.note.ifBlank {  if (lang == "fr") "Aucune description saisie." else "No description entered."},
+                                                text = log.note.ifBlank { Translate.t("no_description_entered", lang) },
                                                 fontFamily = theme.fontFamily,
                                                 fontSize = 14.sp,
                                                 color = theme.onSurface,
@@ -2427,8 +2432,12 @@ fun MigraineTrackerApp(viewModel: MigraineViewModel) {
                                             if (log.symptoms.isNotBlank() || log.triggers.isNotBlank()) {
                                                 Spacer(modifier = Modifier.height(4.dp))
                                                 val details = mutableListOf<String>()
-                                                if (log.symptoms.isNotBlank()) details.add("Symptom: ${log.symptoms}")
-                                                if (log.triggers.isNotBlank()) details.add("Trigger: ${log.triggers}")
+                                                if (log.symptoms.isNotBlank()) {
+                                                    details.add("${Translate.t("symptom", lang)}: ${Translate.translateCsvTags(log.symptoms, lang)}")
+                                                }
+                                                if (log.triggers.isNotBlank()) {
+                                                    details.add("${Translate.t("trigger", lang)}: ${Translate.translateCsvTags(log.triggers, lang)}")
+                                                }
                                                 Text(
                                                     text = details.joinToString(" | "),
                                                     fontFamily = theme.fontFamily,
@@ -2667,7 +2676,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = if (lang == "fr") "Notes pour $friendlyDate" else "Notes for $friendlyDate",
+                    text = Translate.t("notes_for", lang).replace("%s", friendlyDate),
                     fontFamily = theme.fontFamily,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
@@ -2689,7 +2698,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                     ) {
                         Icon(
                             imageVector = Icons.Default.Delete,
-                            contentDescription = "Delete note",
+                            contentDescription = Translate.t("desc_delete_note", lang),
                             tint = theme.accent,
                             modifier = Modifier.size(24.dp)
                         )
@@ -2701,7 +2710,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                     ) {
                         Icon(
                             imageVector = if (isFullScreen) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowUp,
-                            contentDescription = if (isFullScreen) "Minimize sheet" else "Maximize sheet",
+                            contentDescription = if (isFullScreen) Translate.t("desc_minimize_sheet", lang) else Translate.t("desc_maximize_sheet", lang),
                             tint = theme.onSurfaceVariant,
                             modifier = Modifier.size(24.dp)
                         )
@@ -2713,7 +2722,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                     ) {
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "Close editor",
+                            contentDescription = Translate.t("desc_close_editor", lang),
                             tint = theme.onSurfaceVariant,
                             modifier = Modifier.size(24.dp)
                         )
@@ -2743,13 +2752,13 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
-                            contentDescription = "Read-Only Mode Indicator",
+                            contentDescription = Translate.t("desc_read_only_mode", lang),
                             tint = theme.primary,
                             modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
-                            text = if (lang == "fr") "Mode Lecture — Appuyez sur 'Modifier' en bas pour modifier." else "Viewing Mode — Tap 'Edit Note' at the bottom to edit.",
+                            text = Translate.t("viewing_mode_desc", lang),
                             fontFamily = theme.fontFamily,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium,
@@ -2768,13 +2777,13 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                     ) {
                         Icon(
                             imageVector = Icons.Default.Edit,
-                            contentDescription = "Editing Mode Indicator",
+                            contentDescription = Translate.t("desc_editing_mode", lang),
                             tint = theme.accent,
                             modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
-                            text = if (lang == "fr") "Mode Édition — Faites des modifications et cliquez sur 'Enregistrer'." else "Editing Mode — Make changes & click 'Save Note'.",
+                            text = Translate.t("editing_mode_desc", lang),
                             fontFamily = theme.fontFamily,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium,
@@ -2810,9 +2819,9 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                     placeholder = {
                         Text(
                             text = if (isReadOnly) {
-                                if (lang == "fr") "Aucune description saisie." else "No description entered."
+                                Translate.t("no_description_entered", lang)
                             } else {
-                                if (lang == "fr") "Décrivez comment vous vous sentez ?" else "Describe how are you feeling?"
+                                Translate.t("describe_feeling", lang)
                             },
                             fontFamily = theme.fontFamily,
                             fontSize = 14.sp,
@@ -2842,10 +2851,10 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
 
             // Pain Scale Column with animated subtle layers and interactive custom slider
             val severityText = when (intensityVal) {
-                in 1..3 -> "Mild"
-                in 4..6 -> "Moderate"
-                in 7..8 -> "Severe"
-                else -> "Debilitating"
+                in 1..3 -> Translate.t("severity_mild", lang)
+                in 4..6 -> Translate.t("severity_moderate", lang)
+                in 7..8 -> Translate.t("severity_severe", lang)
+                else -> Translate.t("severity_debilitating", lang)
             }
             val severityColor = when (intensityVal) {
                 in 1..3 -> theme.onSurfaceVariant.copy(alpha = 0.8f)
@@ -2855,12 +2864,13 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
             }
 
             CollapsibleSection(
-                title = "Pain Intensity",
+                title = Translate.t("pain_intensity", lang),
                 badgeText = "$intensityVal/10 • $severityText",
                 badgeColor = severityColor.copy(alpha = 0.15f),
                 badgeTextColor = severityColor,
                 isExpanded = isPainExpanded,
                 onToggle = { isPainExpanded = !isPainExpanded },
+                lang = lang,
                 modifier = Modifier
                     .fillMaxWidth()
                     .graphicsLayer {
@@ -2871,11 +2881,11 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                 Column(modifier = Modifier.fillMaxWidth()) {
                     // Visual feedback card with dynamic severity description and matching emoji
                     val (severityEmoji, severityDesc) = when (intensityVal) {
-                        1, 2 -> "😌" to "Very mild head pressure. Easy to ignore without medication."
-                        3, 4 -> "😐" to "Noticeable ache. Able to work/study but active distraction present."
-                        5, 6 -> "😣" to "Moderately strong pain. Difficult to concentrate or stay active."
-                        7, 8 -> "😫" to "Severe, throbbing head pain. Limits physical and mental activities."
-                        else -> "🤯" to "Debilitating, intense pain. Requires immediate rest in a dark room."
+                        1, 2 -> "😌" to Translate.t("severity_desc_1_2", lang)
+                        3, 4 -> "😐" to Translate.t("severity_desc_3_4", lang)
+                        5, 6 -> "😣" to Translate.t("severity_desc_5_6", lang)
+                        7, 8 -> "😫" to Translate.t("severity_desc_7_8", lang)
+                        else -> "🤯" to Translate.t("severity_desc_9_10", lang)
                     }
 
                     Row(
@@ -2977,12 +2987,13 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
             // Symptoms selections group Column with animated subtle layers
             val hasSymptoms = selectedSymptoms.isNotEmpty()
             CollapsibleSection(
-                title = "Symptoms Experienced",
-                badgeText = if (hasSymptoms) "${selectedSymptoms.size} active" else null,
+                title = Translate.t("symptoms_experienced", lang),
+                badgeText = if (hasSymptoms) "${selectedSymptoms.size} ${Translate.t("active", lang)}" else null,
                 badgeColor = theme.accent.copy(alpha = 0.15f),
                 badgeTextColor = theme.accent,
                 isExpanded = isSymptomsExpanded,
                 onToggle = { isSymptomsExpanded = !isSymptomsExpanded },
+                lang = lang,
                 modifier = Modifier
                     .fillMaxWidth()
                     .graphicsLayer {
@@ -2993,7 +3004,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                 if (isReadOnly) {
                     if (selectedSymptoms.isEmpty()) {
                         Text(
-                            text = "No symptoms recorded for this episode.",
+                            text = Translate.t("no_symptoms_recorded", lang),
                             fontFamily = theme.fontFamily,
                             fontSize = 12.sp,
                             color = theme.onSurfaceVariant.copy(alpha = 0.6f),
@@ -3014,7 +3025,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                                         .padding(horizontal = 12.dp, vertical = 8.dp)
                                 ) {
                                     Text(
-                                        text = sym,
+                                        text = Translate.t("tag_" + sym.lowercase().replace(" ", "_"), lang),
                                         fontFamily = theme.fontFamily,
                                         fontSize = 13.sp,
                                         fontWeight = FontWeight.SemiBold,
@@ -3049,7 +3060,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
-                                    text = sym,
+                                    text = Translate.t("tag_" + sym.lowercase().replace(" ", "_"), lang),
                                     fontFamily = theme.fontFamily,
                                     fontSize = 14.sp,
                                     fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
@@ -3066,12 +3077,13 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
             // Triggers selections group Column with animated subtle layers
             val hasTriggers = selectedTriggers.isNotEmpty()
             CollapsibleSection(
-                title = "Suspected Triggers",
-                badgeText = if (hasTriggers) "${selectedTriggers.size} active" else null,
+                title = Translate.t("suspected_triggers", lang),
+                badgeText = if (hasTriggers) "${selectedTriggers.size} ${Translate.t("active", lang)}" else null,
                 badgeColor = theme.primary.copy(alpha = 0.15f),
                 badgeTextColor = theme.primary,
                 isExpanded = isTriggersExpanded,
                 onToggle = { isTriggersExpanded = !isTriggersExpanded },
+                lang = lang,
                 modifier = Modifier
                     .fillMaxWidth()
                     .graphicsLayer {
@@ -3082,7 +3094,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                 if (isReadOnly) {
                     if (selectedTriggers.isEmpty()) {
                         Text(
-                            text = "No suspected triggers recorded.",
+                            text = Translate.t("no_triggers_recorded", lang),
                             fontFamily = theme.fontFamily,
                             fontSize = 12.sp,
                             color = theme.onSurfaceVariant.copy(alpha = 0.6f),
@@ -3103,7 +3115,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                                         .padding(horizontal = 12.dp, vertical = 8.dp)
                                 ) {
                                     Text(
-                                        text = trig,
+                                        text = Translate.t("tag_" + trig.lowercase().replace(" ", "_"), lang),
                                         fontFamily = theme.fontFamily,
                                         fontSize = 13.sp,
                                         fontWeight = FontWeight.SemiBold,
@@ -3138,7 +3150,7 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
-                                    text = trig,
+                                    text = Translate.t("tag_" + trig.lowercase().replace(" ", "_"), lang),
                                     fontFamily = theme.fontFamily,
                                     fontSize = 14.sp,
                                     fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
@@ -3183,12 +3195,12 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Edit,
-                                contentDescription = "Edit Note",
+                                contentDescription = Translate.t("edit_note", lang),
                                 modifier = Modifier.size(18.dp)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Edit Note",
+                                text = Translate.t("edit_note", lang),
                                 fontFamily = theme.fontFamily,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Bold
@@ -3211,12 +3223,12 @@ fun EditorBottomSheet(viewModel: MigraineViewModel) {
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Check,
-                                contentDescription = "Save Note",
+                                contentDescription = Translate.t("save_note", lang),
                                 modifier = Modifier.size(18.dp)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Save Note",
+                                text = Translate.t("save_note", lang),
                                 fontFamily = theme.fontFamily,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Bold
@@ -3238,6 +3250,7 @@ fun CollapsibleSection(
     badgeTextColor: Color = Color.Unspecified,
     isExpanded: Boolean,
     onToggle: () -> Unit,
+    lang: String = "en",
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {
@@ -3300,7 +3313,7 @@ fun CollapsibleSection(
 
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = if (isExpanded) "Collapse" else "Expand",
+                contentDescription = if (isExpanded) Translate.t("desc_collapse", lang) else Translate.t("desc_expand", lang),
                 tint = theme.primary,
                 modifier = Modifier
                     .size(24.dp)
@@ -3412,27 +3425,29 @@ fun generatePdfReport(context: Context, logs: List<MigraineLog>, dateRangeStr: S
     }
     
     var y = 50f
-    canvas.drawText(if (lang == "fr") "Rapport Médical de Migraine" else "Migraine Medical Report", 40f, y, titlePaint)
+    canvas.drawText(Translate.t("pdf_report_title", lang), 40f, y, titlePaint)
     y += 20f
-    canvas.drawText(if (lang == "fr") "Période : $dateRangeStr" else "Date Range: $dateRangeStr", 40f, y, subTitlePaint)
+    canvas.drawText(Translate.t("pdf_date_range", lang).replace("%s", dateRangeStr), 40f, y, subTitlePaint)
     y += 15f
     val generatedOnStr = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date())
-    canvas.drawText(if (lang == "fr") "Généré le : $generatedOnStr" else "Generated on: $generatedOnStr", 40f, y, subTitlePaint)
+    canvas.drawText(Translate.t("pdf_generated_on", lang).replace("%s", generatedOnStr), 40f, y, subTitlePaint)
     y += 25f
     
     val avgPain = if (logs.isNotEmpty()) String.format(Locale.US, "%.1f", logs.map { it.intensity }.average()) else "0.0"
-    canvas.drawText(if (lang == "fr") "Nombre de crises : ${logs.size}   |   Douleur moyenne : $avgPain/10" else "Total Episodes: ${logs.size}   |   Average Pain: $avgPain/10", 40f, y, boldTextPaint)
+    val crisesCountStr = Translate.t("pdf_episodes_count", lang).replace("%d", logs.size.toString())
+    val avgPainStr = Translate.t("pdf_average_pain_val", lang).replace("%s", avgPain)
+    canvas.drawText("$crisesCountStr   |   $avgPainStr", 40f, y, boldTextPaint)
     y += 20f
     
     canvas.drawLine(40f, y, 555f, y, linePaint)
     y += 20f
     
     val colX = floatArrayOf(40f, 110f, 150f, 260f, 380f)
-    canvas.drawText(if (lang == "fr") "Date" else "Date", colX[0], y, headerPaint)
-    canvas.drawText(if (lang == "fr") "Douleur" else "Pain", colX[1], y, headerPaint)
-    canvas.drawText(if (lang == "fr") "Symptômes" else "Symptoms", colX[2], y, headerPaint)
-    canvas.drawText(if (lang == "fr") "Déclencheurs" else "Triggers", colX[3], y, headerPaint)
-    canvas.drawText(if (lang == "fr") "Notes" else "Notes", colX[4], y, headerPaint)
+    canvas.drawText(Translate.t("pdf_header_date", lang), colX[0], y, headerPaint)
+    canvas.drawText(Translate.t("pdf_header_pain", lang), colX[1], y, headerPaint)
+    canvas.drawText(Translate.t("pdf_header_symptoms", lang), colX[2], y, headerPaint)
+    canvas.drawText(Translate.t("pdf_header_triggers", lang), colX[3], y, headerPaint)
+    canvas.drawText(Translate.t("pdf_header_notes", lang), colX[4], y, headerPaint)
     y += 8f
     canvas.drawLine(40f, y, 555f, y, linePaint)
     y += 18f
@@ -3446,11 +3461,11 @@ fun generatePdfReport(context: Context, logs: List<MigraineLog>, dateRangeStr: S
             canvas = page.canvas
             y = 50f
             
-            canvas.drawText(if (lang == "fr") "Date" else "Date", colX[0], y, headerPaint)
-            canvas.drawText(if (lang == "fr") "Douleur" else "Pain", colX[1], y, headerPaint)
-            canvas.drawText(if (lang == "fr") "Symptômes" else "Symptoms", colX[2], y, headerPaint)
-            canvas.drawText(if (lang == "fr") "Déclencheurs" else "Triggers", colX[3], y, headerPaint)
-            canvas.drawText(if (lang == "fr") "Notes" else "Notes", colX[4], y, headerPaint)
+            canvas.drawText(Translate.t("pdf_header_date", lang), colX[0], y, headerPaint)
+            canvas.drawText(Translate.t("pdf_header_pain", lang), colX[1], y, headerPaint)
+            canvas.drawText(Translate.t("pdf_header_symptoms", lang), colX[2], y, headerPaint)
+            canvas.drawText(Translate.t("pdf_header_triggers", lang), colX[3], y, headerPaint)
+            canvas.drawText(Translate.t("pdf_header_notes", lang), colX[4], y, headerPaint)
             y += 8f
             canvas.drawLine(40f, y, 555f, y, linePaint)
             y += 18f
@@ -3459,10 +3474,12 @@ fun generatePdfReport(context: Context, logs: List<MigraineLog>, dateRangeStr: S
         canvas.drawText(log.dateString, colX[0], y, textPaint)
         canvas.drawText("${log.intensity}/10", colX[1], y, textPaint)
         
-        val symText = if (log.symptoms.length > 22) log.symptoms.substring(0, 19) + "..." else log.symptoms
+        val translatedSymptoms = Translate.translateCsvTags(log.symptoms, lang)
+        val symText = if (translatedSymptoms.length > 22) translatedSymptoms.substring(0, 19) + "..." else translatedSymptoms
         canvas.drawText(symText, colX[2], y, textPaint)
         
-        val trigText = if (log.triggers.length > 22) log.triggers.substring(0, 19) + "..." else log.triggers
+        val translatedTriggers = Translate.translateCsvTags(log.triggers, lang)
+        val trigText = if (translatedTriggers.length > 22) translatedTriggers.substring(0, 19) + "..." else translatedTriggers
         canvas.drawText(trigText, colX[3], y, textPaint)
         
         val noteText = if (log.note.length > 32) log.note.substring(0, 29) + "..." else log.note
@@ -3490,19 +3507,21 @@ fun generateCsvReport(context: Context, logs: List<MigraineLog>, dateRangeStr: S
         return "\"" + value.replace("\"", "\"\"") + "\""
     }
     
-    val csvHeader = if (lang == "fr") {
-        "Date,Intensité de douleur,Symptômes,Déclencheurs,Notes"
-    } else {
-        "Date,Pain Intensity,Symptoms,Triggers,Notes"
-    }
+    val csvHeader = listOf(
+        Translate.t("csv_header_date", lang),
+        Translate.t("csv_header_pain", lang),
+        Translate.t("csv_header_symptoms", lang),
+        Translate.t("csv_header_triggers", lang),
+        Translate.t("csv_header_notes", lang)
+    ).joinToString(",")
     
     val sb = java.lang.StringBuilder()
     sb.append(csvHeader).append("\n")
     for (log in logs) {
         sb.append(log.dateString).append(",")
             .append("${log.intensity}/10").append(",")
-            .append(escapeCsv(log.symptoms)).append(",")
-            .append(escapeCsv(log.triggers)).append(",")
+            .append(escapeCsv(Translate.translateCsvTags(log.symptoms, lang))).append(",")
+            .append(escapeCsv(Translate.translateCsvTags(log.triggers, lang))).append(",")
             .append(escapeCsv(log.note)).append("\n")
     }
     
@@ -3521,42 +3540,31 @@ fun generateTxtReport(context: Context, logs: List<MigraineLog>, dateRangeStr: S
     val sb = java.lang.StringBuilder()
     val generatedOnStr = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date())
     
-    if (lang == "fr") {
-        sb.append("RAPPORT MÉDICAL DE MIGRAINE\n")
-        sb.append("============================\n")
-        sb.append("Période : ").append(dateRangeStr).append("\n")
-        sb.append("Généré le : ").append(generatedOnStr).append("\n")
-        sb.append("Nombre total de crises : ").append(logs.size).append("\n")
-        val avgPain = if (logs.isNotEmpty()) logs.map { it.intensity }.average() else 0.0
-        sb.append("Douleur moyenne : ").append(String.format(Locale.US, "%.1f", avgPain)).append("/10\n\n")
-        sb.append("DÉTAIL DES CRISES :\n")
-        sb.append("-------------------\n\n")
-        for (log in logs) {
-            sb.append("Date : ").append(log.dateString).append("\n")
-            sb.append("Intensité : ").append(log.intensity).append("/10\n")
-            if (log.symptoms.isNotBlank()) sb.append("Symptômes : ").append(log.symptoms).append("\n")
-            if (log.triggers.isNotBlank()) sb.append("Déclencheurs : ").append(log.triggers).append("\n")
-            if (log.note.isNotBlank()) sb.append("Notes : ").append(log.note).append("\n")
-            sb.append("\n")
+    val title = Translate.t("txt_report_title", lang)
+    sb.append(title).append("\n")
+    sb.append("=".repeat(title.length)).append("\n")
+    sb.append(Translate.t("txt_date_range", lang)).append(dateRangeStr).append("\n")
+    sb.append(Translate.t("txt_generated_on", lang)).append(generatedOnStr).append("\n")
+    sb.append(Translate.t("txt_total_episodes", lang)).append(logs.size).append("\n")
+    val avgPain = if (logs.isNotEmpty()) logs.map { it.intensity }.average() else 0.0
+    sb.append(Translate.t("txt_average_pain", lang)).append(String.format(Locale.US, "%.1f", avgPain)).append("/10\n\n")
+    
+    val detailTitle = Translate.t("txt_detail_title", lang)
+    sb.append(detailTitle).append("\n")
+    sb.append("-".repeat(detailTitle.length)).append("\n\n")
+    for (log in logs) {
+        sb.append(Translate.t("txt_date", lang)).append(log.dateString).append("\n")
+        sb.append(Translate.t("txt_intensity", lang)).append(log.intensity).append("/10\n")
+        if (log.symptoms.isNotBlank()) {
+            sb.append(Translate.t("txt_symptoms", lang)).append(Translate.translateCsvTags(log.symptoms, lang)).append("\n")
         }
-    } else {
-        sb.append("MIGRAINE MEDICAL REPORT\n")
-        sb.append("=======================\n")
-        sb.append("Date Range: ").append(dateRangeStr).append("\n")
-        sb.append("Generated on: ").append(generatedOnStr).append("\n")
-        sb.append("Total Episodes: ").append(logs.size).append("\n")
-        val avgPain = if (logs.isNotEmpty()) logs.map { it.intensity }.average() else 0.0
-        sb.append("Average Pain: ").append(String.format(Locale.US, "%.1f", avgPain)).append("/10\n\n")
-        sb.append("EPISODE LOGS:\n")
-        sb.append("=============\n\n")
-        for (log in logs) {
-            sb.append("Date: ").append(log.dateString).append("\n")
-            sb.append("Pain Intensity: ").append(log.intensity).append("/10\n")
-            if (log.symptoms.isNotBlank()) sb.append("Symptoms: ").append(log.symptoms).append("\n")
-            if (log.triggers.isNotBlank()) sb.append("Triggers: ").append(log.triggers).append("\n")
-            if (log.note.isNotBlank()) sb.append("Notes: ").append(log.note).append("\n")
-            sb.append("\n")
+        if (log.triggers.isNotBlank()) {
+            sb.append(Translate.t("txt_triggers", lang)).append(Translate.translateCsvTags(log.triggers, lang)).append("\n")
         }
+        if (log.note.isNotBlank()) {
+            sb.append(Translate.t("txt_notes", lang)).append(log.note).append("\n")
+        }
+        sb.append("\n")
     }
     
     val fos = FileOutputStream(file)
@@ -3609,7 +3617,7 @@ fun shareFile(context: Context, file: File, mimeType: String, lang: String) {
         }
         context.startActivity(Intent.createChooser(intent, Translate.t("share_sheet_title", lang)))
     } catch (e: Exception) {
-        Toast.makeText(context, "Error sharing file: ${e.message}", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "${Translate.t("error_sharing_file", lang)}: ${e.message}", Toast.LENGTH_LONG).show()
     }
 }
 
@@ -3695,7 +3703,7 @@ fun ExportScreen(viewModel: MigraineViewModel) {
                 ) {
                     Icon(
                         imageVector = Icons.Default.Info,
-                        contentDescription = "Format selection",
+                        contentDescription = Translate.t("desc_format_selection", lang),
                         tint = theme.primary,
                         modifier = Modifier.size(24.dp)
                     )
@@ -3761,7 +3769,7 @@ fun ExportScreen(viewModel: MigraineViewModel) {
                 ) {
                     Icon(
                         imageVector = Icons.Default.DateRange,
-                        contentDescription = "Date range selection",
+                        contentDescription = Translate.t("desc_date_range_selection", lang),
                         tint = theme.primary,
                         modifier = Modifier.size(24.dp)
                     )
@@ -3915,8 +3923,8 @@ fun ExportScreen(viewModel: MigraineViewModel) {
         val count = filteredLogs.size
         val dateRangeString = when {
             startDateFilter != null && endDateFilter != null -> "$startDateFilter ${Translate.t("to", lang)} $endDateFilter"
-            startDateFilter != null -> "From $startDateFilter"
-            endDateFilter != null -> "Until $endDateFilter"
+            startDateFilter != null -> "${Translate.t("from_date_label", lang)} $startDateFilter"
+            endDateFilter != null -> "${Translate.t("until_date_label", lang)} $endDateFilter"
             else -> Translate.t("all_history", lang)
         }
 
@@ -3970,7 +3978,7 @@ fun ExportScreen(viewModel: MigraineViewModel) {
                         shareFile(context, exportFile, mimeType, lang)
                         Toast.makeText(context, Translate.t("export_success", lang), Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, "Failed to generate report", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, Translate.t("error_generating_report", lang), Toast.LENGTH_LONG).show()
                     }
                 }
             },
@@ -3985,7 +3993,7 @@ fun ExportScreen(viewModel: MigraineViewModel) {
         ) {
             Icon(
                 imageVector = Icons.Default.Share,
-                contentDescription = "Share",
+                contentDescription = Translate.t("desc_share", lang),
                 modifier = Modifier.size(18.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -4040,7 +4048,7 @@ fun SettingsScreen(viewModel: MigraineViewModel) {
                 ) {
                     Icon(
                         imageVector = Icons.Default.Info,
-                        contentDescription = "Language settings",
+                        contentDescription = Translate.t("desc_language_settings", lang),
                         tint = theme.primary,
                         modifier = Modifier.size(24.dp)
                     )
@@ -4105,7 +4113,7 @@ fun SettingsScreen(viewModel: MigraineViewModel) {
                                 if (isSelected) {
                                     Icon(
                                         imageVector = Icons.Default.Check,
-                                        contentDescription = "Selected",
+                                        contentDescription = Translate.t("desc_selected", lang),
                                         tint = theme.accent,
                                         modifier = Modifier.size(18.dp)
                                     )
@@ -4141,7 +4149,7 @@ fun SettingsScreen(viewModel: MigraineViewModel) {
                 ) {
                     Icon(
                         imageVector = Icons.Default.Settings,
-                        contentDescription = "Visual settings",
+                        contentDescription = Translate.t("desc_visual_settings", lang),
                         tint = theme.primary,
                         modifier = Modifier.size(24.dp)
                     )
@@ -4254,7 +4262,7 @@ fun SettingsScreen(viewModel: MigraineViewModel) {
                             ) {
                                 if (themeId == "auto") {
                                     Text(
-                                        text = if (lang == "fr") "Système" else "System",
+                                        text = Translate.t("system", lang),
                                         fontSize = 11.sp,
                                         fontFamily = theme.fontFamily,
                                         color = theme.onSurfaceVariant.copy(alpha = 0.6f),
@@ -4308,7 +4316,7 @@ fun SettingsScreen(viewModel: MigraineViewModel) {
                 ) {
                     Icon(
                         imageVector = Icons.Default.Info,
-                        contentDescription = "Interactive Tutorial icon",
+                        contentDescription = Translate.t("desc_interactive_tutorial_icon", lang),
                         tint = theme.primary,
                         modifier = Modifier.size(24.dp)
                     )
@@ -4458,7 +4466,7 @@ object Translate {
             "lang_selection_desc" to "Change default language",
             "english" to "English",
             "french" to "Français",
-            "developed_by" to "Developed with Google AI Studio",
+            "developed_by" to "Developed by Kevin Jobin",
             "about_desc" to "Quick and painless migraine journaling.",
             "save" to "Save",
             "dashboard_tab" to "Dashboard",
@@ -4519,7 +4527,129 @@ object Translate {
             "lang_select_desc" to "Select your language to customize your tracking and reports.",
             "lang_english" to "English",
             "lang_french" to "Français",
-            "lang_confirm" to "Let's Begin"
+            "lang_confirm" to "Let's Begin",
+            "symptoms_detected" to "Symptoms Detected",
+            "suspected_triggers" to "Suspected Triggers",
+            "notes" to "Notes",
+            "no_entry_this_day" to "No migraine entry registered on this day",
+            "log_episode_btn" to "+ Log Episode",
+            "symptoms_experienced" to "Symptoms Experienced",
+            "no_symptoms_recorded" to "No symptoms recorded for this episode.",
+            "no_triggers_recorded" to "No suspected triggers recorded.",
+            "edit_note" to "Edit Note",
+            "save_note" to "Save Note",
+            "no_description_entered" to "No description entered.",
+            "error_sharing_file" to "Error sharing file",
+            "error_generating_report" to "Failed to generate report",
+            "no_sleep" to "No Sleep",
+            "severity_mild" to "Mild",
+            "severity_moderate" to "Moderate",
+            "severity_severe" to "Severe",
+            "severity_debilitating" to "Debilitating",
+            "pain_intensity" to "Pain Intensity",
+            "severity_desc_1_2" to "Very mild head pressure. Easy to ignore without medication.",
+            "severity_desc_3_4" to "Noticeable ache. Able to work/study but active distraction present.",
+            "severity_desc_5_6" to "Moderately strong pain. Difficult to concentrate or stay active.",
+            "severity_desc_7_8" to "Severe, throbbing head pain. Limits physical and mental activities.",
+            "severity_desc_9_10" to "Debilitating, intense pain. Requires immediate rest in a dark room.",
+            "describe_feeling" to "Describe how are you feeling?",
+            "notes_for" to "Notes for %s",
+            "viewing_mode_desc" to "Viewing Mode — Tap 'Edit Note' at the bottom to edit.",
+            "editing_mode_desc" to "Editing Mode — Make changes & click 'Save Note'.",
+            "from_date_label" to "From",
+            "until_date_label" to "Until",
+            "splash_tagline" to "A quiet space for mindful logging & clarity",
+            "splash_connecting" to "Connecting...",
+            "tut_info_tip_dashboard" to "📅 Dashboard: Shows color indicators on migraine dates. Double tap to check current tracking streak stats!",
+            "tut_info_tip_history" to "🔍 History Feed: Your scrollable timelines. Perfect for examining specific past triggers or exporting summaries.",
+            "tut_info_tip_settings" to "⚙️ Settings Panel: Swap language locales, backup local SQLite logs, or replay this tutorial anytime.",
+            "tut_search_placeholder" to "Type to test search filtering...",
+            "tut_no_results" to "No matching results",
+            "theme_label_misty_day" to "Misty",
+            "theme_label_soothing_night" to "Calm",
+            "theme_label_forest_breath" to "Forest",
+            "theme_label_cosmic_lavender" to "Cosmic",
+            "theme_label_warm_terracotta" to "Terracotta",
+            "tag_aura" to "Aura",
+            "tag_temple_pressure" to "Temple Pressure",
+            "tag_nausea" to "Nausea",
+            "tag_light_sensitivity" to "Light Sensitivity",
+            "tag_sound_sensitivity" to "Sound Sensitivity",
+            "tag_throbbing_pain" to "Throbbing Pain",
+            "tag_blurred_vision" to "Blurred Vision",
+            "tag_lack_of_sleep" to "Lack of Sleep",
+            "tag_bright_lights" to "Bright Lights",
+            "tag_stress" to "Stress",
+            "tag_caffeine" to "Caffeine",
+            "tag_skipped_meal" to "Skipped Meal",
+            "tag_weather_change" to "Weather Change",
+            "tag_dehydration" to "Dehydration",
+            "calendar_mode_month" to "Month",
+            "calendar_mode_week" to "Week",
+            "calendar_mode_day" to "Day",
+            "calendar_mode_year" to "Year",
+            "desc_no_journals" to "No journals registered",
+            "desc_search" to "Search",
+            "desc_clear_search" to "Clear search",
+            "desc_filters" to "Filters",
+            "desc_start_date" to "Start Date",
+            "desc_end_date" to "End Date",
+            "desc_no_results" to "No results",
+            "desc_delete_entry" to "Delete entry",
+            "desc_prev_month" to "Previous Month",
+            "desc_next_month" to "Next Month",
+            "desc_prev_week" to "Previous Week",
+            "desc_next_week" to "Next Week",
+            "desc_prev_day" to "Previous Day",
+            "desc_next_day" to "Next Day",
+            "desc_edit_tracker" to "Edit Tracker",
+            "desc_delete_tracker" to "Delete Tracker",
+            "desc_no_records" to "No records",
+            "desc_see_all_episodes" to "See all episodes",
+            "desc_delete_note" to "Delete note",
+            "desc_minimize_sheet" to "Minimize sheet",
+            "desc_maximize_sheet" to "Maximize sheet",
+            "desc_close_editor" to "Close editor",
+            "desc_read_only_mode" to "Read-Only Mode Indicator",
+            "desc_editing_mode" to "Editing Mode Indicator",
+            "desc_collapse" to "Collapse",
+            "desc_expand" to "Expand",
+            "desc_format_selection" to "Format selection",
+            "desc_date_range_selection" to "Date range selection",
+            "desc_share" to "Share",
+            "desc_language_settings" to "Language settings",
+            "desc_selected" to "Selected",
+            "desc_visual_settings" to "Visual settings",
+            "desc_interactive_tutorial_icon" to "Interactive Tutorial icon",
+            "prev_year" to "Previous Year",
+            "next_year" to "Next Year",
+            "system" to "System",
+            "pdf_report_title" to "Migraine Medical Report",
+            "pdf_date_range" to "Date Range: %s",
+            "pdf_generated_on" to "Generated on: %s",
+            "pdf_episodes_count" to "Total Episodes: %d",
+            "pdf_average_pain_val" to "Average Pain: %s/10",
+            "pdf_header_date" to "Date",
+            "pdf_header_pain" to "Pain",
+            "pdf_header_symptoms" to "Symptoms",
+            "pdf_header_triggers" to "Triggers",
+            "pdf_header_notes" to "Notes",
+            "csv_header_date" to "Date",
+            "csv_header_pain" to "Pain Intensity",
+            "csv_header_symptoms" to "Symptoms",
+            "csv_header_triggers" to "Triggers",
+            "csv_header_notes" to "Notes",
+            "txt_report_title" to "MIGRAINE MEDICAL REPORT",
+            "txt_date_range" to "Date Range: ",
+            "txt_generated_on" to "Generated on: ",
+            "txt_total_episodes" to "Total Episodes: ",
+            "txt_average_pain" to "Average Pain: ",
+            "txt_detail_title" to "EPISODE LOGS:",
+            "txt_date" to "Date: ",
+            "txt_intensity" to "Pain Intensity: ",
+            "txt_symptoms" to "Symptoms: ",
+            "txt_triggers" to "Triggers: ",
+            "txt_notes" to "Notes: "
         ),
         "fr" to mapOf(
             "app_title" to "Journal de Migraine",
@@ -4564,7 +4694,7 @@ object Translate {
             "lang_selection_desc" to "Changer la langue de l'interface",
             "english" to "Anglais",
             "french" to "Français",
-            "developed_by" to "Développé avec Google AI Studio",
+            "developed_by" to "Développé par Kevin Jobin",
             "about_desc" to "Journalisation simple et rapide des migraines.",
             "save" to "Enregistrer",
             "dashboard_tab" to "Tableau de Bord",
@@ -4625,13 +4755,142 @@ object Translate {
             "lang_select_desc" to "Sélectionnez votre langue pour personnaliser votre suivi et vos rapports.",
             "lang_english" to "English",
             "lang_french" to "Français",
-            "lang_confirm" to "Commencer"
+            "lang_confirm" to "Commencer",
+            "symptoms_detected" to "Symptômes Détectés",
+            "suspected_triggers" to "Déclencheurs Suspectés",
+            "notes" to "Notes",
+            "no_entry_this_day" to "Aucun épisode enregistré ce jour",
+            "log_episode_btn" to "+ Enregistrer crise",
+            "symptoms_experienced" to "Symptômes Rencontrés",
+            "no_symptoms_recorded" to "Aucun symptôme enregistré pour cet épisode.",
+            "no_triggers_recorded" to "Aucun déclencheur suspecté enregistré.",
+            "edit_note" to "Modifier la Note",
+            "save_note" to "Enregistrer la Note",
+            "no_description_entered" to "Aucune description saisie.",
+            "error_sharing_file" to "Erreur lors du partage du fichier",
+            "error_generating_report" to "Échec de la génération du rapport",
+            "no_sleep" to "Sommeil",
+            "severity_mild" to "Légère",
+            "severity_moderate" to "Modérée",
+            "severity_severe" to "Sévère",
+            "severity_debilitating" to "Handicapante",
+            "pain_intensity" to "Intensité de la douleur",
+            "severity_desc_1_2" to "Pression crânienne très légère. Facile à ignorer sans traitement.",
+            "severity_desc_3_4" to "Douleur perceptible. Capable de travailler/étudier mais distraction active présente.",
+            "severity_desc_5_6" to "Douleur modérément forte. Difficile de se concentrer ou de rester actif.",
+            "severity_desc_7_8" to "Douleur intense et lancinante. Limite les activités physiques et mentales.",
+            "severity_desc_9_10" to "Douleur invalidante et intense. Nécessite un repos immédiat dans une pièce sombre.",
+            "describe_feeling" to "Décrivez comment vous vous sentez ?",
+            "notes_for" to "Notes pour %s",
+            "viewing_mode_desc" to "Mode Lecture — Appuyez sur 'Modifier' en bas pour modifier.",
+            "editing_mode_desc" to "Mode Édition — Faites des modifications et cliquez sur 'Enregistrer'.",
+            "from_date_label" to "Depuis",
+            "until_date_label" to "Jusqu'au",
+            "splash_tagline" to "Prenez soin de vous au quotidien",
+            "splash_connecting" to "Se connecter...",
+            "tut_info_tip_dashboard" to "📅 Tableau de Bord : Affiche les jours avec migraines. Appuyez deux fois pour voir vos statistiques de suivi !",
+            "tut_info_tip_history" to "🔍 Historique : Journal chronologique complet. Idéal pour faire défiler vos saisies et consulter vos rapports.",
+            "tut_info_tip_settings" to "⚙️ Paramètres : Changez la langue de l'app, exportez des sauvegardes ou rejouez ce guide.",
+            "tut_search_placeholder" to "Saisissez pour filtrer...",
+            "tut_no_results" to "Aucun résultat",
+            "theme_label_misty_day" to "Brume",
+            "theme_label_soothing_night" to "Calme",
+            "theme_label_forest_breath" to "Forêt",
+            "theme_label_cosmic_lavender" to "Cosmique",
+            "theme_label_warm_terracotta" to "Terracotta",
+            "tag_aura" to "Aura",
+            "tag_temple_pressure" to "Pression temporale",
+            "tag_nausea" to "Nausée",
+            "tag_light_sensitivity" to "Sensibilité lumière",
+            "tag_sound_sensitivity" to "Sensibilité bruit",
+            "tag_throbbing_pain" to "Douleur lancinante",
+            "tag_blurred_vision" to "Vision floue",
+            "tag_lack_of_sleep" to "Manque de sommeil",
+            "tag_bright_lights" to "Lumières vives",
+            "tag_stress" to "Stress",
+            "tag_caffeine" to "Caféine",
+            "tag_skipped_meal" to "Repas sauté",
+            "tag_weather_change" to "Changement météo",
+            "tag_dehydration" to "Déshydratation",
+            "calendar_mode_month" to "Mois",
+            "calendar_mode_week" to "Semaine",
+            "calendar_mode_day" to "Jour",
+            "calendar_mode_year" to "Année",
+            "desc_no_journals" to "Aucun journal enregistré",
+            "desc_search" to "Rechercher",
+            "desc_clear_search" to "Effacer la recherche",
+            "desc_filters" to "Filtres",
+            "desc_start_date" to "Date de début",
+            "desc_end_date" to "Date de fin",
+            "desc_no_results" to "Aucun résultat",
+            "desc_delete_entry" to "Supprimer l'entrée",
+            "desc_prev_month" to "Mois précédent",
+            "desc_next_month" to "Mois suivant",
+            "desc_prev_week" to "Semaine précédente",
+            "desc_next_week" to "Semaine suivante",
+            "desc_prev_day" to "Jour précédent",
+            "desc_next_day" to "Jour suivant",
+            "desc_edit_tracker" to "Modifier le suivi",
+            "desc_delete_tracker" to "Supprimer le suivi",
+            "desc_no_records" to "Aucun enregistrement",
+            "desc_see_all_episodes" to "Voir tous les épisodes",
+            "desc_delete_note" to "Supprimer la note",
+            "desc_minimize_sheet" to "Réduire le volet",
+            "desc_maximize_sheet" to "Agrandir le volet",
+            "desc_close_editor" to "Fermer l'éditeur",
+            "desc_read_only_mode" to "Indicateur de mode lecture seule",
+            "desc_editing_mode" to "Indicateur de mode édition",
+            "desc_collapse" to "Réduire",
+            "desc_expand" to "Développer",
+            "desc_format_selection" to "Sélection du format",
+            "desc_date_range_selection" to "Sélection de la période",
+            "desc_share" to "Partager",
+            "desc_language_settings" to "Paramètres de langue",
+            "desc_selected" to "Sélectionné",
+            "desc_visual_settings" to "Paramètres visuels",
+            "desc_interactive_tutorial_icon" to "Icône du tutoriel interactif",
+            "prev_year" to "Année précédente",
+            "next_year" to "Année suivante",
+            "system" to "Système",
+            "pdf_report_title" to "Rapport Médical de Migraine",
+            "pdf_date_range" to "Période : %s",
+            "pdf_generated_on" to "Généré le : %s",
+            "pdf_episodes_count" to "Nombre de crises : %d",
+            "pdf_average_pain_val" to "Douleur moyenne : %s/10",
+            "pdf_header_date" to "Date",
+            "pdf_header_pain" to "Douleur",
+            "pdf_header_symptoms" to "Symptômes",
+            "pdf_header_triggers" to "Déclencheurs",
+            "pdf_header_notes" to "Notes",
+            "csv_header_date" to "Date",
+            "csv_header_pain" to "Intensité de douleur",
+            "csv_header_symptoms" to "Symptômes",
+            "csv_header_triggers" to "Déclencheurs",
+            "csv_header_notes" to "Notes",
+            "txt_report_title" to "RAPPORT MÉDICAL DE MIGRAINE",
+            "txt_date_range" to "Période : ",
+            "txt_generated_on" to "Généré le : ",
+            "txt_total_episodes" to "Nombre total de crises : ",
+            "txt_average_pain" to "Douleur moyenne : ",
+            "txt_detail_title" to "DÉTAIL DES CRISES :",
+            "txt_date" to "Date : ",
+            "txt_intensity" to "Intensité : ",
+            "txt_symptoms" to "Symptômes : ",
+            "txt_triggers" to "Déclencheurs : ",
+            "txt_notes" to "Notes : "
         )
     )
 
     fun t(key: String, lang: String): String {
         val dict = translations[lang] ?: translations["en"]!!
         return dict[key] ?: (translations["en"]!![key] ?: key)
+    }
+
+    fun translateCsvTags(tagsString: String, lang: String): String {
+        if (tagsString.isBlank()) return ""
+        return tagsString.split(",").map { it.trim() }.filter { it.isNotBlank() }
+            .map { t("tag_" + it.lowercase().replace(" ", "_"), lang) }
+            .joinToString(", ")
     }
 }
 
@@ -4823,7 +5082,7 @@ fun MigraineSplashScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = if (lang == "fr") "Prenez soin de vous au quotidien" else "A quiet space for mindful logging & clarity",
+                    text = Translate.t("splash_tagline", lang),
                     fontFamily = theme.fontFamily,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
@@ -4841,7 +5100,7 @@ fun MigraineSplashScreen(
                     .graphicsLayer { alpha = textAlpha * 0.8f }
             ) {
                 Text(
-                    text = if (lang == "fr") "Se connecter..." else "Connecting...",
+                    text = Translate.t("splash_connecting", lang),
                     fontFamily = theme.fontFamily,
                     fontSize = 12.sp,
                     color = theme.primary.copy(alpha = 0.4f),
@@ -5173,7 +5432,7 @@ fun OnboardingTutorialOverlay(
                                                         modifier = Modifier.size(14.dp)
                                                     )
                                                     Spacer(modifier = Modifier.width(4.dp))
-                                                    Text("Aura", fontSize = 10.sp, fontWeight = FontWeight.Bold, color = theme.primary)
+                                                    Text(Translate.t("tag_aura", lang), fontSize = 10.sp, fontWeight = FontWeight.Bold, color = theme.primary)
                                                 }
                                             }
 
@@ -5198,7 +5457,7 @@ fun OnboardingTutorialOverlay(
                                                         modifier = Modifier.size(14.dp)
                                                     )
                                                     Spacer(modifier = Modifier.width(4.dp))
-                                                    Text(if (lang == "fr") "Sommeil" else "No Sleep", fontSize = 10.sp, fontWeight = FontWeight.Bold, color = theme.primary)
+                                                    Text(Translate.t("no_sleep", lang), fontSize = 10.sp, fontWeight = FontWeight.Bold, color = theme.primary)
                                                 }
                                             }
                                         }
@@ -5303,9 +5562,9 @@ fun OnboardingTutorialOverlay(
                                             horizontalArrangement = Arrangement.SpaceAround
                                         ) {
                                             val menuList = listOf(
-                                                0 to (if (lang == "fr") "Journal" else "Dashboard"),
-                                                1 to (if (lang == "fr") "Historique" else "History"),
-                                                2 to (if (lang == "fr") "Réglages" else "Settings")
+                                                0 to Translate.t("dashboard_tab", lang),
+                                                1 to Translate.t("history_tab", lang),
+                                                2 to Translate.t("settings_tab", lang)
                                             )
                                             menuList.forEach { (index, title) ->
                                                 val isSelected = step2ActiveTab == index
@@ -5344,18 +5603,9 @@ fun OnboardingTutorialOverlay(
                                             contentAlignment = Alignment.Center
                                         ) {
                                             val infoTip = when (step2ActiveTab) {
-                                                0 -> if (lang == "fr")
-                                                    "📅 Calendrier : Visualisez d'un coup d'œil les jours actifs et doublecliquez pour voir vos séries de migraines."
-                                                else
-                                                    "📅 Dashboard: Shows color indicators on migraine dates. Double tap to check current tracking streak stats!"
-                                                1 -> if (lang == "fr")
-                                                    "🔍 Historique : Journal chronologique complet. Idéal pour faire défiler vos saisies et consulter vos rapports."
-                                                else
-                                                    "🔍 History Feed: Your scrollable timelines. Perfect for examining specific past triggers or exporting summaries."
-                                                else -> if (lang == "fr")
-                                                    "⚙️ Paramètres : Changez la langue de l'app, exportez des sauvegardes ou rejouez ce guide."
-                                                else
-                                                    "⚙️ Settings Panel: Swap language locales, backup local SQLite logs, or replay this tutorial anytime."
+                                                0 -> Translate.t("tut_info_tip_dashboard", lang)
+                                                1 -> Translate.t("tut_info_tip_history", lang)
+                                                else -> Translate.t("tut_info_tip_settings", lang)
                                             }
                                             Text(
                                                 text = infoTip,
@@ -5402,7 +5652,7 @@ fun OnboardingTutorialOverlay(
                                         OutlinedTextField(
                                             value = step3Query,
                                             onValueChange = { step3Query = it },
-                                            placeholder = { Text(if (lang == "fr") "Saisissez pour filtrer..." else "Type to test search filtering...", fontSize = 11.sp) },
+                                            placeholder = { Text(Translate.t("tut_search_placeholder", lang), fontSize = 11.sp) },
                                             textStyle = androidx.compose.ui.text.TextStyle(fontSize = 11.sp, fontFamily = theme.fontFamily),
                                             singleLine = true,
                                             leadingIcon = {
@@ -5425,7 +5675,11 @@ fun OnboardingTutorialOverlay(
                                         Spacer(modifier = Modifier.height(8.dp))
 
                                         // Mini List display
-                                        val mockEntries = listOf(
+                                        val mockEntries = if (lang == "fr") listOf(
+                                            "Aura de stress" to "25 Mai",
+                                            "Déshydratation" to "18 Mai",
+                                            "Manque de sommeil Pulsation" to "09 Mai"
+                                        ) else listOf(
                                             "Stress Aura" to "May 25",
                                             "Dehydration" to "May 18",
                                             "Lack of Sleep Throbbing" to "May 09"
@@ -5440,7 +5694,7 @@ fun OnboardingTutorialOverlay(
                                         ) {
                                             if (filteredMock.isEmpty()) {
                                                 Text(
-                                                    text = if (lang == "fr") "Aucun résultat" else "No matching results",
+                                                    text = Translate.t("tut_no_results", lang),
                                                     fontSize = 10.sp,
                                                     color = theme.onSurfaceVariant.copy(alpha = 0.5f),
                                                     textAlign = TextAlign.Center,
@@ -5498,14 +5752,14 @@ fun OnboardingTutorialOverlay(
                                         .padding(vertical = 12.dp, horizontal = 6.dp)
                                 ) {
                                     val availableThemes = listOf(
-                                        Triple("misty_day", Color(0xFF2B5C8F), "Misty Light"),
-                                        Triple("soothing_night", Color(0xFF90B5E0), "Calm Dark"),
-                                        Triple("forest_breath", Color(0xFF81C784), "Forest Moss"),
-                                        Triple("cosmic_lavender", Color(0xFFD1C4E9), "Cosmic Violet"),
-                                        Triple("warm_terracotta", Color(0xFFD84315), "Terracotta")
+                                        "misty_day" to Color(0xFF2B5C8F),
+                                        "soothing_night" to Color(0xFF90B5E0),
+                                        "forest_breath" to Color(0xFF81C784),
+                                        "cosmic_lavender" to Color(0xFFD1C4E9),
+                                        "warm_terracotta" to Color(0xFFD84315)
                                     )
 
-                                    availableThemes.forEach { (id, indicatorColor, label) ->
+                                    availableThemes.forEach { (id, indicatorColor) ->
                                         Column(
                                             horizontalAlignment = Alignment.CenterHorizontally,
                                             modifier = Modifier.clickable {
@@ -5543,7 +5797,7 @@ fun OnboardingTutorialOverlay(
                                             }
                                             Spacer(modifier = Modifier.height(4.dp))
                                             Text(
-                                                text = label.split(" ")[0],
+                                                text = Translate.t("theme_label_$id", lang),
                                                 fontSize = 9.sp,
                                                 fontFamily = theme.fontFamily,
                                                 color = theme.onSurfaceVariant
@@ -5768,7 +6022,7 @@ fun LanguageSelectionOverlay(
                             if (isEng) {
                                 Icon(
                                     imageVector = Icons.Default.Check,
-                                    contentDescription = "Selected",
+                                    contentDescription = Translate.t("desc_selected", selectedLang),
                                     tint = theme.accent,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -5810,7 +6064,7 @@ fun LanguageSelectionOverlay(
                             if (isFr) {
                                 Icon(
                                     imageVector = Icons.Default.Check,
-                                    contentDescription = "Selected",
+                                    contentDescription = Translate.t("desc_selected", selectedLang),
                                     tint = theme.accent,
                                     modifier = Modifier.size(20.dp)
                                 )
